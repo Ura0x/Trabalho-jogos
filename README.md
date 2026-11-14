@@ -8,11 +8,12 @@ Para abrir: no GameMaker, *Open* → `ChronoBreak.gmx/ChronoBreak.project.gmx`.
 
 | Tecla | Ação |
 |---|---|
-| W A S D | mover |
+| W A S D ou setas | mover |
 | Mouse | mirar; botão esquerdo atira |
 | E | ler terminal (registros da história) |
 | ESPAÇO | escudo (liberado na fase 3) |
-| ENTER | avançar diálogo |
+| ENTER ou clique | avançar diálogo |
+| TAB (ou botão PULAR) | pular o diálogo inteiro |
 | P | pausa (M volta ao menu) |
 | R | tentar de novo depois de morrer |
 | 1 a 6 (no menu) | ir direto para uma fase (bom para testar e apresentar) |
@@ -49,7 +50,7 @@ Para abrir: no GameMaker, *Open* → `ChronoBreak.gmx/ChronoBreak.project.gmx`.
 
 - Vida/velocidade de cada inimigo: no *Create* de cada um.
 - Quantidade da horda da fase 4: `total` no *Create* do `obj_spawner`.
-- Calor da arma: `calor += 9` e `calor - 0.5` no *Step* do `obj_player`.
+- Calor da arma: `calor += 9` (arma normal), `calor += 4` (arma melhorada, fase 4 em diante) e `calor - 0.5` no *Step* do `obj_player`.
 - Vida do chefe: `vida_max` no *Create* do `obj_chefe`.
 
 ## Sprites
@@ -66,4 +67,5 @@ Gerados no código, por não terem equivalente no pacote: tiro inimigo, fonte da
 - **Efeitos** (`snd_*`): vêm da biblioteca de sons que acompanha o GameMaker (pasta `Sounds` da instalação).
 - **Músicas** (`mus_fase`, `mus_chefe`, `mus_final`): chiptunes simples gerados para o jogo.
 - A troca de música é feita pelo script `scr_musica` (chamado no *Create* do `obj_menu`, do `obj_controle` e do `obj_final`).
+- `scr_musica_manter` (chamado no *Step* desses mesmos objetos) volta a tocar a música se ela parar sozinha.
 - Para usar outra música (ex.: "Hunting for Your Dream" no final), basta trocar o arquivo do som `mus_final` na IDE.

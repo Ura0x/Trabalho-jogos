@@ -71,10 +71,10 @@ if (global.pausado) {
     exit;
 }
 
-// ---------- Movimento (WASD) ----------
+// ---------- Movimento (WASD ou setinhas) ----------
 var mx, my;
-mx = keyboard_check(ord('D')) - keyboard_check(ord('A'));
-my = keyboard_check(ord('S')) - keyboard_check(ord('W'));
+mx = max(keyboard_check(ord('D')), keyboard_check(vk_right)) - max(keyboard_check(ord('A')), keyboard_check(vk_left));
+my = max(keyboard_check(ord('S')), keyboard_check(vk_down)) - max(keyboard_check(ord('W')), keyboard_check(vk_up));
 movendo = (mx != 0 || my != 0);
 if (movendo) {
     scr_mover(point_direction(0, 0, mx, my), velocidade);
@@ -112,18 +112,19 @@ if (mouse_check_button(mb_left) &amp;&amp; espera_tiro &lt;= 0 &amp;&amp; supera
     sound_play(snd_tiro);
 
     if (global.arma_melhorada) {
-        // fase 4 em diante: arma melhorada, sem superaquecer e com dano dobrado
+        // fase 4 em diante: arma melhorada, dano dobrado e esquenta mais devagar
         b.dano = 2;
         espera_tiro = 7;
+        calor += 4;
     } else {
         b.dano = 1;
         espera_tiro = 10;
         calor += 9;
-        if (calor &gt;= 100) {
-            calor = 100;
-            superaquecida = true;
-            sound_play(snd_superaquecida);
-        }
+    }
+    if (calor &gt;= 100) {
+        calor = 100;
+        superaquecida = true;
+        sound_play(snd_superaquecida);
     }
 }
 

@@ -69,8 +69,8 @@
     <instance index="7" objName="obj_robo" x="943" y="254" name="inst_1D7F70E8" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
     <instance index="7" objName="obj_robo" x="338" y="419" name="inst_DAEEE471" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
     <instance index="7" objName="obj_robo" x="954" y="436" name="inst_C214CD7D" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="7" objName="obj_robo" x="434" y="595" name="inst_48CC3B8B" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="7" objName="obj_robo" x="883" y="595" name="inst_C146EDCF" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="7" objName="obj_robo" x="440" y="320" name="inst_48CC3B8B" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="7" objName="obj_robo" x="840" y="320" name="inst_C146EDCF" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
   </instances>
   <tiles/>
 </room>

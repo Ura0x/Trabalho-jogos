@@ -62,7 +62,7 @@ if (global.pausado) {
 image_speed = 0.25;
 if (!instance_exists(obj_player)) exit;
 
-if (dist &lt; 400) alerta = true;
+if (dist &lt; 300) alerta = true;
 
 if (alerta) {
     // ponto em volta do jogador que o drone persegue

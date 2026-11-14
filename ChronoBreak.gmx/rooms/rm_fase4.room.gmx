@@ -72,8 +72,8 @@
     <instance index="6" objName="obj_drone" x="978" y="588" name="inst_9EF79CC8" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
     <instance index="7" objName="obj_robo" x="337" y="405" name="inst_7DED2955" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
     <instance index="7" objName="obj_robo" x="800" y="400" name="inst_88F56697" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="7" objName="obj_robo" x="434" y="589" name="inst_4F1250F4" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="7" objName="obj_robo" x="883" y="589" name="inst_9B90A2C4" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="7" objName="obj_robo" x="300" y="500" name="inst_4F1250F4" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="7" objName="obj_robo" x="980" y="500" name="inst_9B90A2C4" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
   </instances>
   <tiles/>
 </room>

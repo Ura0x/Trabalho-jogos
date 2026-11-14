@@ -98,7 +98,7 @@ if (guardiao) {
     invulneravel = false;
 }
 
-if (dist &lt; 450) alerta = true;
+if (dist &lt; 300) alerta = true;
 
 // anda ate o jogador
 if (alerta &amp;&amp; dist &gt; 40) {
@@ -115,6 +115,8 @@ if (dist &lt; 60 &amp;&amp; espera_ataque &lt;= 0) {
     espera_ataque = 60;
 }
 
+// o golpe acima pode ter matado o jogador, entao confere de novo
+if (!instance_exists(obj_player)) exit;
 if (obj_player.x &lt; x) sprite_index = spr_robo_esq;
 else sprite_index = spr_robo_dir;</string>
           </argument>

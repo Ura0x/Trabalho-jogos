@@ -55,7 +55,8 @@ cx = room_width / 2;</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var sobre_jogar, sobre_sair;
+            <string>scr_musica_manter();
+var sobre_jogar, sobre_sair;
 sobre_jogar = (abs(mouse_x - cx) &lt; 152 &amp;&amp; abs(mouse_y - 400) &lt; 42);
 sobre_sair = (abs(mouse_x - cx) &lt; 152 &amp;&amp; abs(mouse_y - 500) &lt; 42);
 
@@ -112,7 +113,7 @@ draw_sprite(spr_botao_sair, f, cx, 500);
 draw_set_font(fnt_pequena);
 draw_set_color(c_gray);
 draw_text(cx, 600, "ENTER jogar  |  ESC sair  |  1 a 6: ir direto para uma fase");
-draw_text(cx, 625, "WASD mover   Mouse mirar/atirar   E ler terminal   ESPACO escudo   P pausa");
+draw_text(cx, 625, "WASD/setas mover   Mouse mirar/atirar   E ler terminal   ESPACO escudo   P pausa");
 
 draw_set_halign(fa_left);
 draw_sprite(spr_cursor, 0, mouse_x, mouse_y);</string>

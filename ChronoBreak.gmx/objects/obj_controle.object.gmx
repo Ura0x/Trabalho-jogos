@@ -99,18 +99,28 @@ scr_dialogo_comecar("jogar");</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Logica principal da fase
+            <string>scr_musica_manter();
+/// Logica principal da fase
 
 if (flash &gt; 0) flash -= 1;
 
 // ---------------- DIALOGO ----------------
 // Enquanto tem dialogo na tela, o resto do jogo fica parado.
 if (dialogo_ativo) {
+    // botao PULAR (canto da caixa de dialogo) ou TAB: pula todas as falas
+    var sobre_pular;
+    sobre_pular = (mouse_x &gt; view_xview[0] + room_width - 200 &amp;&amp; mouse_x &lt; view_xview[0] + room_width - 50
+                &amp;&amp; mouse_y &gt; view_yview[0] + room_height - 205 &amp;&amp; mouse_y &lt; view_yview[0] + room_height - 175);
+    if (keyboard_check_pressed(vk_tab) || (sobre_pular &amp;&amp; mouse_check_button_pressed(mb_left))) {
+        fala_atual = fala_total;
+        sound_play(snd_dialogo);
+    }
+
     if (fala_atual &lt; fala_total) {
         letras += 1.5;
-        if (keyboard_check_pressed(vk_enter)) {
+        if (keyboard_check_pressed(vk_enter) || mouse_check_button_pressed(mb_left)) {
             if (letras &lt; string_length(fala_texto[fala_atual])) {
-                // ENTER no meio da frase: mostra a frase inteira
+                // ENTER/clique no meio da frase: mostra a frase inteira
                 letras = string_length(fala_texto[fala_atual]);
             } else {
                 // proxima fala
@@ -126,6 +136,8 @@ if (dialogo_ativo) {
         dialogo_ativo = false;
         fala_total = 0;
         global.pausado = false;
+        // o clique que fechou o dialogo nao pode virar tiro
+        with (obj_player) espera_tiro = 20;
 
         switch (acao_final) {
             case "jogar":
@@ -257,7 +269,7 @@ if (instance_exists(obj_player)) {
     draw_sprite_ext(spr_hp, 0, vx + 16 + 52, vy + 8 + 16, (160 / 172) * obj_player.vida / obj_player.vida_max, 1, 0, c_white, 1);
 
     // calor da arma
-    if (global.arma_melhorada == false) {
+    {
         draw_set_halign(fa_left);
         draw_set_color(c_white);
         draw_text(vx + 250, vy + 10, "CALOR");
@@ -318,7 +330,7 @@ draw_set_font(fnt_pequena);
 draw_set_halign(fa_left);
 draw_set_color(c_white);
 draw_set_alpha(0.7);
-draw_text(vx + 16, vy + h - 22, "WASD mover   Mouse mirar/atirar   E ler terminal   ESPACO escudo   P pausa");
+draw_text(vx + 16, vy + h - 22, "WASD/setas mover   Mouse mirar/atirar   E ler terminal   ESPACO escudo   P pausa");
 draw_set_alpha(1);
 draw_set_font(fnt_texto);
 
@@ -367,7 +379,21 @@ if (dialogo_ativo &amp;&amp; fala_atual &lt; fala_total) {
 
     draw_set_halign(fa_right);
     draw_set_color(c_gray);
-    draw_text(vx + w - 60, vy + h - 70, "ENTER &gt;&gt;");
+    draw_text(vx + w - 60, vy + h - 70, "ENTER ou clique &gt;&gt;");
+
+    // botao PULAR
+    var sobre_pular;
+    sobre_pular = (mouse_x &gt; vx + w - 200 &amp;&amp; mouse_x &lt; vx + w - 50 &amp;&amp; mouse_y &gt; vy + h - 205 &amp;&amp; mouse_y &lt; vy + h - 175);
+    draw_set_color(c_dkgray);
+    if (sobre_pular) draw_set_color(c_gray);
+    draw_rectangle(vx + w - 200, vy + h - 205, vx + w - 50, vy + h - 175, false);
+    draw_set_color(c_white);
+    draw_rectangle(vx + w - 200, vy + h - 205, vx + w - 50, vy + h - 175, true);
+    draw_set_halign(fa_center);
+    draw_text(vx + w - 125, vy + h - 201, "PULAR [TAB]");
+
+    // cursor do mouse (a mira some durante o dialogo)
+    draw_sprite(spr_cursor, 0, mouse_x, mouse_y);
 }
 
 // ---------------- PAUSA ----------------
