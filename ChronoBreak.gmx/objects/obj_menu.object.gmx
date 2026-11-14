@@ -32,6 +32,7 @@ global.pular_intro = false;
 // musica (global.musica guarda qual musica esta tocando, -1 = nenhuma)
 sound_stop_all();
 global.musica = -1;
+global.musica_espera = 0;
 scr_musica(mus_fase);
 cx = room_width / 2;</string>
           </argument>
