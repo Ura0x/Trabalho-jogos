@@ -33,8 +33,8 @@ max_na_tela = 14;    // nunca mais que isso ao mesmo tempo
 // pontos de onde os inimigos saem
 ponto_x[0] = 64;   ponto_y[0] = 400;
 ponto_x[1] = 1216; ponto_y[1] = 400;
-ponto_x[2] = 64;   ponto_y[2] = 640;
-ponto_x[3] = 1216; ponto_y[3] = 640;</string>
+ponto_x[2] = 64;   ponto_y[2] = 590;
+ponto_x[3] = 1216; ponto_y[3] = 590;</string>
           </argument>
         </arguments>
       </action>

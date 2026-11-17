@@ -30,7 +30,7 @@
     <yoffset>0</yoffset>
   </makerSettings>
   <backgrounds>
-    <background visible="-1" foreground="0" name="bg_pedras" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="-1" foreground="0" name="bg_fase4" x="0" y="0" htiled="0" vtiled="0" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -50,30 +50,34 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1280" hview="720" xport="0" yport="0" wport="1280" hport="720" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance index="0" objName="obj_controle" x="0" y="0" name="inst_8DDE59C2" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="12" objName="obj_parede" x="0" y="0" name="inst_12F730B1" locked="0" code="" scaleX="40" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="12" objName="obj_parede" x="0" y="688" name="inst_A4654A78" locked="0" code="" scaleX="40" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="12" objName="obj_parede" x="0" y="32" name="inst_81B72062" locked="0" code="" scaleX="1" scaleY="20.5" colour="-1" rotation="0"/>
-    <instance index="12" objName="obj_parede" x="1248" y="32" name="inst_33CCBD3D" locked="0" code="" scaleX="1" scaleY="20.5" colour="-1" rotation="0"/>
-    <instance index="20" objName="obj_predio" x="448" y="32" name="inst_781F1FF5" locked="0" code="" scaleX="12" scaleY="4" colour="-1" rotation="0"/>
-    <instance index="16" objName="obj_conteiner_verde" x="64" y="48" name="inst_1734396F" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="16" objName="obj_conteiner_verde" x="1052" y="48" name="inst_FA813ACD" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="18" objName="obj_fonte" x="576" y="296" name="inst_5BBD7CF7" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="19" objName="obj_terminal" x="290" y="40" name="inst_E10E6939" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="22" objName="obj_saida" x="576" y="160" name="inst_D161C5BA" locked="0" code="" scaleX="4" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="24" objName="obj_spawner" x="0" y="0" name="inst_18E5FB68" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="1" objName="obj_player" x="640" y="640" name="inst_EF070BB8" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="5" objName="obj_guarda" x="235" y="280" name="inst_3946F427" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="5" objName="obj_guarda" x="787" y="229" name="inst_6D3E2723" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="5" objName="obj_guarda" x="929" y="378" name="inst_C58307C0" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="5" objName="obj_guarda" x="470" y="497" name="inst_5FAC162F" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="6" objName="obj_drone" x="434" y="277" name="inst_A7118182" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="6" objName="obj_drone" x="970" y="275" name="inst_E821D025" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="6" objName="obj_drone" x="978" y="588" name="inst_9EF79CC8" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="7" objName="obj_robo" x="337" y="405" name="inst_7DED2955" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="7" objName="obj_robo" x="800" y="400" name="inst_88F56697" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="7" objName="obj_robo" x="300" y="500" name="inst_4F1250F4" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
-    <instance index="7" objName="obj_robo" x="980" y="500" name="inst_9B90A2C4" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_controle" x="0" y="0" name="inst_849ACFB5" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_parede" x="0" y="0" name="inst_CE1FD3D9" locked="0" code="" scaleX="40" scaleY="2.1875" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_parede" x="0" y="645" name="inst_067F0CFC" locked="0" code="" scaleX="40" scaleY="2.34375" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_parede" x="0" y="70" name="inst_93550840" locked="0" code="" scaleX="0.375" scaleY="17.9688" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_parede" x="1268" y="70" name="inst_397A7623" locked="0" code="" scaleX="0.375" scaleY="17.9688" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_parede" x="15" y="70" name="inst_C40D31B5" locked="0" code="" scaleX="6.03125" scaleY="3.125" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_parede" x="1075" y="70" name="inst_2106119E" locked="0" code="" scaleX="5.9375" scaleY="3.125" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_parede" x="400" y="0" name="inst_D1711CBD" locked="0" code="" scaleX="15" scaleY="5.15625" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_parede" x="545" y="165" name="inst_0C83E786" locked="0" code="" scaleX="1.71875" scaleY="1.03125" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_parede" x="680" y="165" name="inst_F675299B" locked="0" code="" scaleX="1.71875" scaleY="1.03125" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_parede" x="790" y="170" name="inst_B464C554" locked="0" code="" scaleX="2.5625" scaleY="0.875" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_parede" x="510" y="375" name="inst_85F184E0" locked="0" code="" scaleX="6.875" scaleY="3.90625" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_terminal" x="408" y="170" name="inst_E306F0C4" locked="0" code="" scaleX="2.5" scaleY="0.875" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_saida" x="600" y="168" name="inst_ABA4C70E" locked="0" code="" scaleX="2.5" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_player" x="640" y="600" name="inst_1A42721E" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_spawner" x="0" y="0" name="inst_B7A1774F" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_guarda" x="235" y="280" name="inst_9F4FB02B" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_guarda" x="787" y="250" name="inst_6DEDC86A" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_guarda" x="929" y="378" name="inst_78549014" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_guarda" x="380" y="497" name="inst_2475263C" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_drone" x="434" y="277" name="inst_7B6BC3C6" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_drone" x="970" y="275" name="inst_E261E34A" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_drone" x="978" y="588" name="inst_3A9AFA39" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_robo" x="337" y="405" name="inst_D9814559" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_robo" x="820" y="410" name="inst_E2CBBB93" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_robo" x="300" y="500" name="inst_1F3C42B2" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_robo" x="980" y="500" name="inst_A06D7A69" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
+    <instance index="0" objName="obj_onnerb_cena" x="640" y="190" name="inst_0AEB0001" locked="0" code="" scaleX="1" scaleY="1" colour="-1" rotation="0"/>
   </instances>
   <tiles/>
 </room>

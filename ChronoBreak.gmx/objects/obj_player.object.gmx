@@ -36,11 +36,15 @@ movendo = false;
 // Arma
 espera_tiro = 0;       // frames ate poder atirar de novo
 calor = 0;             // 0 a 100
+// arma melhorada da fase 4 em diante (decidido pela propria fase, nao por variavel global)
+melhorada = (room == rm_fase4 || room == rm_fase5 || room == rm_boss);
 superaquecida = false;
 
 // Escudo (liberado na fase 3)
 escudo_ativo = 0;      // frames que o escudo ainda fica ligado
 escudo_recarga = 0;    // frames ate poder usar de novo
+
+passo = 0;             // frames ate o proximo som de passo
 
 image_speed = 0;</string>
           </argument>
@@ -80,6 +84,19 @@ if (movendo) {
     scr_mover(point_direction(0, 0, mx, my), velocidade);
 }
 
+// ---------- Som de passos ----------
+// metal nas fases dentro de predios, concreto na rua (fases 2 e 4)
+if (movendo) {
+    passo -= 1;
+    if (passo &lt;= 0) {
+        passo = 18;
+        if (room == rm_fase2 || room == rm_fase4) sound_play(choose(snd_passo_concreto1, snd_passo_concreto2, snd_passo_concreto3));
+        else sound_play(choose(snd_passo_metal1, snd_passo_metal2, snd_passo_metal3));
+    }
+} else {
+    passo = 0;
+}
+
 // ---------- Mira ----------
 angulo = point_direction(x, y, mouse_x, mouse_y);
 
@@ -104,6 +121,9 @@ if (espera_tiro &gt; 0) espera_tiro -= 1;
 calor = max(0, calor - 0.5);
 if (superaquecida &amp;&amp; calor &lt;= 30) superaquecida = false;
 
+// clicou com a arma superaquecida: barulho de tiro falhando
+if (superaquecida &amp;&amp; mouse_check_button_pressed(mb_left)) sound_play(snd_superaquecida);
+
 if (mouse_check_button(mb_left) &amp;&amp; espera_tiro &lt;= 0 &amp;&amp; superaquecida == false) {
     var b;
     b = instance_create(x + lengthdir_x(30, angulo), y + 6 + lengthdir_y(30, angulo), obj_tiro);
@@ -111,7 +131,7 @@ if (mouse_check_button(mb_left) &amp;&amp; espera_tiro &lt;= 0 &amp;&amp; supera
     b.image_angle = b.direction;
     sound_play(snd_tiro);
 
-    if (global.arma_melhorada) {
+    if (melhorada) {
         // fase 4 em diante: arma melhorada, dano dobrado e esquenta mais devagar
         b.dano = 2;
         espera_tiro = 7;
@@ -129,7 +149,10 @@ if (mouse_check_button(mb_left) &amp;&amp; espera_tiro &lt;= 0 &amp;&amp; supera
 }
 
 // ---------- Escudo (ESPACO) ----------
-if (escudo_ativo &gt; 0) escudo_ativo -= 1;
+if (escudo_ativo &gt; 0) {
+    escudo_ativo -= 1;
+    if (escudo_ativo == 0) sound_play(snd_escudo_fim);   // escudo desligou
+}
 if (escudo_recarga &gt; 0) escudo_recarga -= 1;
 if (global.tem_escudo &amp;&amp; keyboard_check_pressed(vk_space) &amp;&amp; escudo_recarga &lt;= 0) {
     escudo_ativo = 120;    // 2 segundos ligado

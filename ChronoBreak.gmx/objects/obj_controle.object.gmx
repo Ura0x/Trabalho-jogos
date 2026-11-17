@@ -58,6 +58,9 @@ guardioes_avisados = false;
 // Final do jogo
 tempo_portal = 0;
 
+// Game over (conta os frames para a tela aparecer aos poucos)
+tempo_morto = 0;
+
 // Nome da fase para o HUD
 nome_fase = "";
 switch (room) {
@@ -75,9 +78,15 @@ else scr_musica(mus_fase);
 
 // A fase comeca com o dialogo de introducao
 // (se o jogador morreu e apertou R, pula a introducao)
-if (global.pular_intro == false) scr_textos_fase("inicio");
-global.pular_intro = false;
-scr_dialogo_comecar("jogar");</string>
+// Na fase 4 quem comeca o dialogo e o Onnerb (obj_onnerb_cena), depois de entrar em cena
+cena_onnerb = (room == rm_fase4 &amp;&amp; global.pular_intro == false);
+if (cena_onnerb) {
+    global.pausado = true;
+} else {
+    if (global.pular_intro == false) scr_textos_fase("inicio");
+    scr_dialogo_comecar("jogar");
+}
+global.pular_intro = false;</string>
           </argument>
         </arguments>
       </action>
@@ -99,8 +108,7 @@ scr_dialogo_comecar("jogar");</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_musica_manter();
-/// Logica principal da fase
+            <string>/// Logica principal da fase
 
 if (flash &gt; 0) flash -= 1;
 
@@ -151,6 +159,11 @@ if (dialogo_ativo) {
             case "proxima_fase":
                 room_goto_next();
                 break;
+            case "onnerb_sai":
+                // fim da conversa da fase 4: Onnerb volta para o predio
+                global.pausado = true;
+                with (obj_onnerb_cena) estado = "saindo";
+                break;
             case "chefe_fase2":
                 with (obj_chefe) invulneravel = false;
                 break;
@@ -158,6 +171,7 @@ if (dialogo_ativo) {
                 estado = "portal";
                 global.pausado = true;
                 sound_play(snd_portal);
+                scr_musica(mus_final);   // musica de conclusao comeca junto com a tela tremendo
                 break;
             // "continuar": nao faz nada, o jogo so continua
         }
@@ -177,18 +191,23 @@ if (estado == "portal") {
 
 // ---------------- GAME OVER ----------------
 if (estado == "morto") {
+    tempo_morto += 1;
     if (keyboard_check_pressed(ord('R'))) {
         global.pular_intro = true;
         room_restart();
     }
-    if (keyboard_check_pressed(ord('M'))) room_goto(rm_menu);
+    if (keyboard_check_pressed(ord('M'))) scr_voltar_menu();
     exit;
 }
 if (!instance_exists(obj_player)) {
     estado = "morto";
+    scr_musica(mus_game_over);
     global.pausado = true;
     exit;
 }
+
+// cena do Onnerb na fase 4 (sem dialogo na tela): espera ela acabar
+if (estado == "inicio") exit;
 
 // ---------------- PAUSA ----------------
 if (keyboard_check_pressed(ord('P'))) {
@@ -196,7 +215,7 @@ if (keyboard_check_pressed(ord('P'))) {
     global.pausado = pausa;
 }
 if (pausa) {
-    if (keyboard_check_pressed(ord('M'))) room_goto(rm_menu);
+    if (keyboard_check_pressed(ord('M'))) scr_voltar_menu();
     exit;
 }
 
@@ -412,17 +431,16 @@ if (pausa) {
 
 // ---------------- GAME OVER ----------------
 if (estado == "morto") {
-    draw_set_alpha(0.7);
-    draw_set_color(c_black);
-    draw_rectangle(vx, vy, vx + w, vy + h, false);
-    draw_set_alpha(1);
-    draw_set_halign(fa_center);
-    draw_set_font(fnt_titulo);
-    draw_set_color(c_red);
-    draw_text(vx + w / 2, vy + h / 2 - 60, "VOCE MORREU");
-    draw_set_font(fnt_texto);
-    draw_set_color(c_white);
-    draw_text(vx + w / 2, vy + h / 2 + 10, "R - tentar de novo      M - menu");
+    // a tela de GAME OVER (animada, 36 quadros) aparece aos poucos em 1 segundo
+    // o GIF original troca de quadro a cada 80 ms (80 ms = ~5 frames do jogo, entao avanca 1/4.8 = ~0.21 por frame)
+    draw_sprite_ext(spr_game_over, floor(tempo_morto * 0.21) mod 36, vx, vy, 1, 1, 0, c_white, min(1, tempo_morto / 60));
+    scr_titulo(vx + w / 2, vy + h / 2, "GAME OVER", c_red, min(1, tempo_morto / 60));
+    if (tempo_morto &gt; 60) {
+        draw_set_halign(fa_center);
+        draw_set_font(fnt_texto);
+        draw_set_color(c_white);
+        draw_text(vx + w / 2, vy + h - 80, "R - tentar de novo      M - menu");
+    }
 }
 
 // ---------------- PORTAL (tela ficando branca) ----------------

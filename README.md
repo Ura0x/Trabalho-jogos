@@ -36,13 +36,14 @@ Para abrir: no GameMaker, *Open* → `ChronoBreak.gmx/ChronoBreak.project.gmx`.
 - **Textos dos terminais:** evento *Create* do `obj_terminal`.
 - **`obj_controle`** (um por fase): diálogo, estado da fase (`inicio → jogando → saida_aberta → saindo`), HUD, pausa, game over e o final.
 - **`obj_player`:** movimento, mira, tiro, calor da arma e escudo.
+- **`obj_onnerb_cena`** (fase 4): Onnerb sai da porta da NEXUS, conversa com o John e volta para dentro; só depois a horda começa. `obj_onnerb`: Onnerb derrotado no final. Sprites do `boss_sprites_pack` (andar de frente, de costas e ajoelhado) (`spr_onnerb_frente`, `spr_onnerb_costas`, `spr_onnerb_parado`, `spr_onnerb`).
 - **Inimigos:** todos são filhos de `obj_inimigo_pai` (vida, piscar, morte, distância até o jogador).
   - `obj_guarda`: máquina de estados `parado → atacando`; anda até ~200px e atira se não tiver parede no meio.
   - `obj_drone`: voa em círculo em volta do jogador (ignora paredes) e atira.
   - `obj_robo`: lento, muita vida, golpe físico que atravessa o escudo. `obj_robo_guardiao` é o da saída da fase 3.
-  - `obj_chefe`: ataques em ciclo e as zonas de impacto (`obj_zona_impacto`).
-- **Paredes:** `obj_parede` (esticada na room e desenhada em tiles). Contêineres, casas, fonte e terminal são filhos de `obj_obstaculo`, que é filho de `obj_parede`. Por isso tudo bloqueia o movimento e os tiros.
-- **Scripts auxiliares:** `scr_mover` (andar sem atravessar parede), `scr_tiro_inimigo`, `scr_dano_jogador`, `scr_fala`, `scr_dialogo_comecar`.
+  - `obj_chefe`: ataques em ciclo e as zonas de impacto (`obj_zona_impacto`). Visual do pacote *boss robo 8 bit*: azul na fase 1, vermelho na fase 2 (sprites `spr_chefe_parado/atira/carrega 1 e 2`, `spr_chefe_dano`), balas `spr_orb_ciano`/`spr_orb_brasa` (script `scr_tiro_chefe`) e explosão final `obj_chefe_morte`.
+- **Mapas e paredes:** cada fase usa um fundo desenhado (`bg_fase1` … `bg_fase5`, `bg_boss`). As colisões são retângulos invisíveis de `obj_parede` (esticados com scaleX/scaleY) colocados em cima das paredes, máquinas, prédios, carros etc. do desenho. O `obj_terminal` é filho de `obj_parede` e também é invisível: só mostra um "!" piscando e "[E] Ler".
+- **Scripts auxiliares:** `scr_mover` (andar sem atravessar parede), `scr_tiro_inimigo`, `scr_dano_jogador`, `scr_fala`, `scr_dialogo_comecar`, `scr_titulo` (título grande estilizado do menu e do game over, fonte `fnt_logo`).
 
 `global.pausado` congela o jogo durante diálogos, pausa e game over: todo objeto que se mexe checa essa variável no começo do *Step*.
 
@@ -53,19 +54,18 @@ Para abrir: no GameMaker, *Open* → `ChronoBreak.gmx/ChronoBreak.project.gmx`.
 - Calor da arma: `calor += 9` (arma normal), `calor += 4` (arma melhorada, fase 4 em diante) e `calor - 0.5` no *Step* do `obj_player`.
 - Vida do chefe: `vida_max` no *Create* do `obj_chefe`.
 
-## Sprites
+## Arte
 
-Tudo saiu do pacote de sprites do grupo (personagem, Cyborg_Big, Drone, contêineres, tiles e UI). Os PNGs já foram ampliados em 2x, 3x ou 4x (pixel art sem borrar):
-- guardas = Cyborg_Big com tom avermelhado;
-- robôs = Cyborg_Big maior e azulado;
-- chefe = Drone grande e vermelho.
-
-Gerados no código, por não terem equivalente no pacote: tiro inimigo, fonte da praça, retângulo da saída e as máscaras de colisão (`spr_mascara_p`/`spr_mascara_g`).
+- **Personagens e inimigos:** pacote de sprites do grupo (Character/Main, Cyborg_Big, Drone), ampliados em 2x a 4x. Guardas = Cyborg_Big avermelhado; robôs = Cyborg_Big maior e azulado; chefe = robô do pacote *boss robo 8 bit* (ampliado 4x).
+- **Mapas das fases, menu, game over e botões START/SAIR:** pasta `Fases` do pacote *assets chrono gate*. Menu (`spr_menu`, 60 quadros) e game over (`spr_game_over`, 36 quadros) são os GIFs animados, convertidos em sprites. Os mapas (432x224) foram ampliados 3x sem borrar e encaixados na tela de 1280x720 (faixa preta em cima e embaixo).
+- Gerados no código: tiro inimigo, retângulo verde da saída e as máscaras de colisão (`spr_mascara_p`/`spr_mascara_g`).
 
 ## Sons
 
-- **Efeitos** (`snd_*`): vêm da biblioteca de sons que acompanha o GameMaker (pasta `Sounds` da instalação).
-- **Músicas** (`mus_fase`, `mus_chefe`, `mus_final`): chiptunes simples gerados para o jogo.
+- **Do pacote *assets chrono gate*:** `mus_fase` (Musica_Ambiente, menu e fases 1-5), `mus_chefe` (Musica_Boss), `mus_game_over` (Audio_Game_Over, toca quando o John morre), `mus_final` (ending), `snd_explosao` (boom), `snd_escudo` (Ganhou Escudo), `snd_escudo_fim` (Perdeu Escudo), `snd_superaquecida` (tiro falhando), `snd_tiro_inimigo` e os passos (`snd_passo_metal1-3` nas fases internas, `snd_passo_concreto1-3` nas fases 2 e 4).
+- **Da biblioteca do GameMaker:** tiro do jogador, acerto, dano, diálogo, alerta, terminal, saída, portal e item.
+- `mus_final` começa quando a tela treme no final (depois do último diálogo com o chefe) e para ao voltar da tela final para o menu.
 - A troca de música é feita pelo script `scr_musica` (chamado no *Create* do `obj_menu`, do `obj_controle` e do `obj_final`).
-- `scr_musica_manter` (chamado no *Step* desses mesmos objetos) volta a tocar a música se ela parar sozinha.
-- Para usar outra música (ex.: "Hunting for Your Dream" no final), basta trocar o arquivo do som `mus_final` na IDE.
+- `scr_voltar_menu` volta ao menu com `game_restart()` (tela final e tecla M), para não sobrar nada da partida anterior.
+- `scr_musica_parar` para todas as músicas (stop + volume 0, porque às vezes o stop sozinho não bastava).
+- Não use `sound_isplaying` para música: nesta versão (rodando no Wine) ela sempre devolve 0, e religar a música por causa disso criava cópias tocando ao mesmo tempo.

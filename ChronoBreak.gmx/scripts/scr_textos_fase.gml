@@ -99,8 +99,10 @@ case rm_fase4:
         scr_fala("Onnerb", "Ha?");
         scr_fala("John", "Perguntou.");
         scr_fala("Onnerb", "Seu palhaco! Ja perdi muito tempo com suas idiotices. MORRA!");
+    }
+    if (m == "onnerb_saiu") {
         scr_fala("", "Onnerb entra no predio e uma horda de robos, guardas e drones avanca sobre John.");
-        scr_fala("IA", "Titor, usei pecas dos robos para melhorar sua arma: ela nao superaquece mais e causa o dobro de dano. Derrote todos para entrar no predio!");
+        scr_fala("IA", "Titor, usei pecas dos robos para melhorar sua arma: ela esquenta bem mais devagar e causa o dobro de dano. Derrote todos para entrar no predio!");
     }
     if (m == "limpo") {
         scr_fala("IA", "Nao sobrou ninguem. A porta do predio da NEXUS esta aberta!");

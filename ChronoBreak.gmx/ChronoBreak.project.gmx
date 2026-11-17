@@ -68,6 +68,13 @@
     <sound>sound\snd_dano</sound>
     <sound>sound\snd_superaquecida</sound>
     <sound>sound\snd_escudo</sound>
+    <sound>sound\snd_escudo_fim</sound>
+    <sound>sound\snd_passo_metal1</sound>
+    <sound>sound\snd_passo_metal2</sound>
+    <sound>sound\snd_passo_metal3</sound>
+    <sound>sound\snd_passo_concreto1</sound>
+    <sound>sound\snd_passo_concreto2</sound>
+    <sound>sound\snd_passo_concreto3</sound>
     <sound>sound\snd_item</sound>
     <sound>sound\snd_dialogo</sound>
     <sound>sound\snd_alerta</sound>
@@ -77,6 +84,7 @@
     <sound>sound\mus_fase</sound>
     <sound>sound\mus_chefe</sound>
     <sound>sound\mus_final</sound>
+    <sound>sound\mus_game_over</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_john_baixo_parado</sprite>
@@ -95,47 +103,60 @@
     <sprite>sprites\spr_robo_dir</sprite>
     <sprite>sprites\spr_robo_esq</sprite>
     <sprite>sprites\spr_drone</sprite>
-    <sprite>sprites\spr_chefe</sprite>
+    <sprite>sprites\spr_chefe_parado1</sprite>
+    <sprite>sprites\spr_chefe_carrega1</sprite>
+    <sprite>sprites\spr_chefe_atira1</sprite>
+    <sprite>sprites\spr_chefe_parado2</sprite>
+    <sprite>sprites\spr_chefe_carrega2</sprite>
+    <sprite>sprites\spr_chefe_atira2</sprite>
+    <sprite>sprites\spr_chefe_dano</sprite>
+    <sprite>sprites\spr_chefe_morte</sprite>
+    <sprite>sprites\spr_orb_ciano</sprite>
+    <sprite>sprites\spr_orb_brasa</sprite>
     <sprite>sprites\spr_onnerb</sprite>
+    <sprite>sprites\spr_onnerb_frente</sprite>
+    <sprite>sprites\spr_onnerb_costas</sprite>
+    <sprite>sprites\spr_onnerb_parado</sprite>
     <sprite>sprites\spr_mascara_p</sprite>
     <sprite>sprites\spr_mascara_g</sprite>
     <sprite>sprites\spr_parede</sprite>
-    <sprite>sprites\spr_casa</sprite>
-    <sprite>sprites\spr_conteiner</sprite>
-    <sprite>sprites\spr_gerador</sprite>
-    <sprite>sprites\spr_conteiner_verde</sprite>
-    <sprite>sprites\spr_terminal</sprite>
     <sprite>sprites\spr_item_escudo</sprite>
-    <sprite>sprites\spr_fonte</sprite>
     <sprite>sprites\spr_saida</sprite>
     <sprite>sprites\spr_hp_barra</sprite>
     <sprite>sprites\spr_hp</sprite>
     <sprite>sprites\spr_cursor</sprite>
     <sprite>sprites\spr_botao_jogar</sprite>
     <sprite>sprites\spr_botao_sair</sprite>
+    <sprite>sprites\spr_game_over</sprite>
+    <sprite>sprites\spr_menu</sprite>
   </sprites>
   <backgrounds name="background">
-    <background>background\bg_asfalto</background>
-    <background>background\bg_asfalto2</background>
-    <background>background\bg_madeira</background>
-    <background>background\bg_pedras</background>
-    <background>background\bg_piso_claro</background>
+    <background>background\bg_fase1</background>
+    <background>background\bg_fase2</background>
+    <background>background\bg_fase3</background>
+    <background>background\bg_fase4</background>
+    <background>background\bg_fase5</background>
+    <background>background\bg_boss</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_mover.gml</script>
     <script>scripts\scr_tiro_inimigo.gml</script>
+    <script>scripts\scr_tiro_chefe.gml</script>
     <script>scripts\scr_dano_jogador.gml</script>
     <script>scripts\scr_fala.gml</script>
     <script>scripts\scr_dialogo_comecar.gml</script>
     <script>scripts\scr_textos_fase.gml</script>
     <script>scripts\scr_musica.gml</script>
-    <script>scripts\scr_musica_manter.gml</script>
+    <script>scripts\scr_musica_parar.gml</script>
+    <script>scripts\scr_voltar_menu.gml</script>
+    <script>scripts\scr_titulo.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_texto</font>
     <font>fonts\fnt_pequena</font>
     <font>fonts\fnt_titulo</font>
+    <font>fonts\fnt_logo</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_controle</object>
@@ -150,20 +171,14 @@
     <object>objects\obj_chefe</object>
     <object>objects\obj_zona_impacto</object>
     <object>objects\obj_explosao</object>
+    <object>objects\obj_chefe_morte</object>
     <object>objects\obj_parede</object>
-    <object>objects\obj_obstaculo</object>
-    <object>objects\obj_conteiner</object>
-    <object>objects\obj_gerador</object>
-    <object>objects\obj_conteiner_verde</object>
-    <object>objects\obj_casa</object>
-    <object>objects\obj_fonte</object>
     <object>objects\obj_terminal</object>
-    <object>objects\obj_predio</object>
-    <object>objects\obj_portao</object>
     <object>objects\obj_saida</object>
     <object>objects\obj_item_escudo</object>
     <object>objects\obj_spawner</object>
     <object>objects\obj_onnerb</object>
+    <object>objects\obj_onnerb_cena</object>
     <object>objects\obj_menu</object>
     <object>objects\obj_final</object>
   </objects>

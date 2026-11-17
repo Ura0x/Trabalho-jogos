@@ -28,13 +28,19 @@
             <string>/// Menu principal (primeira room do jogo: inicializa as variaveis globais)
 global.pausado = false;
 global.pular_intro = false;
+global.tem_escudo = false;       // cada fase define de novo o que o jogador ja tem
+global.arma_melhorada = false;
 
 // musica (global.musica guarda qual musica esta tocando, -1 = nenhuma)
 sound_stop_all();
-global.musica = -1;
-global.musica_espera = 0;
+scr_musica_parar();   // garante que a musica do final (ou outra) parou
 scr_musica(mus_fase);
-cx = room_width / 2;</string>
+cx = room_width / 2;
+// posicao dos botoes (o START fica em cima do START desenhado no fundo)
+quadro = 0;   // quadro da animacao do fundo (spr_menu, 60 quadros)
+bx = 648;
+by_jogar = 359;
+by_sair = 470;</string>
           </argument>
         </arguments>
       </action>
@@ -56,10 +62,13 @@ cx = room_width / 2;</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_musica_manter();
+            <string>// anima o fundo: o GIF original troca de quadro a cada 70 ms (70 ms = ~4 frames do jogo, entao avanca 1/4.2 = ~0.24 por frame)
+quadro += 0.24;
+if (quadro >= 60) quadro -= 60;
+
 var sobre_jogar, sobre_sair;
-sobre_jogar = (abs(mouse_x - cx) &lt; 152 &amp;&amp; abs(mouse_y - 400) &lt; 42);
-sobre_sair = (abs(mouse_x - cx) &lt; 152 &amp;&amp; abs(mouse_y - 500) &lt; 42);
+sobre_jogar = (abs(mouse_x - bx) &lt; 157 &amp;&amp; abs(mouse_y - by_jogar) &lt; 48);
+sobre_sair = (abs(mouse_x - bx) &lt; 157 &amp;&amp; abs(mouse_y - by_sair) &lt; 48);
 
 if (keyboard_check_pressed(vk_enter) || (sobre_jogar &amp;&amp; mouse_check_button_pressed(mb_left))) room_goto(rm_fase1);
 if (keyboard_check_pressed(vk_escape) || (sobre_sair &amp;&amp; mouse_check_button_pressed(mb_left))) game_end();
@@ -95,26 +104,26 @@ if (keyboard_check_pressed(ord('6'))) room_goto(rm_boss);</string>
             <string>draw_set_halign(fa_center);
 draw_set_valign(fa_top);
 
-draw_set_font(fnt_titulo);
-draw_set_color(c_aqua);
-draw_text(cx, 140, "CHRONO BREAK");
-draw_set_font(fnt_texto);
-draw_set_color(c_white);
-draw_text(cx, 210, "2089. A NEXUS controla o mundo. Um tecnico de manutencao viu o que nao devia.");
+// fundo animado
+draw_sprite(spr_menu, quadro, 0, 0);
 
-// botoes do pacote de UI (frame 1 = pressionado)
+// nome do jogo, centralizado acima dos botoes
+scr_titulo(cx, 205, "CHRONO BREAK", c_aqua, 1);
+draw_set_halign(fa_center);
+
+// botoes (frame 1 = mouse em cima)
 var f;
 f = 0;
-if (abs(mouse_x - cx) &lt; 152 &amp;&amp; abs(mouse_y - 400) &lt; 42) f = 1;
-draw_sprite(spr_botao_jogar, f, cx, 400);
+if (abs(mouse_x - bx) &lt; 157 &amp;&amp; abs(mouse_y - by_jogar) &lt; 48) f = 1;
+draw_sprite(spr_botao_jogar, f, bx, by_jogar);
 f = 0;
-if (abs(mouse_x - cx) &lt; 152 &amp;&amp; abs(mouse_y - 500) &lt; 42) f = 1;
-draw_sprite(spr_botao_sair, f, cx, 500);
+if (abs(mouse_x - bx) &lt; 157 &amp;&amp; abs(mouse_y - by_sair) &lt; 48) f = 1;
+draw_sprite(spr_botao_sair, f, bx, by_sair);
 
 draw_set_font(fnt_pequena);
 draw_set_color(c_gray);
-draw_text(cx, 600, "ENTER jogar  |  ESC sair  |  1 a 6: ir direto para uma fase");
-draw_text(cx, 625, "WASD/setas mover   Mouse mirar/atirar   E ler terminal   ESPACO escudo   P pausa");
+draw_text(cx, 660, "ENTER jogar  |  ESC sair  |  1 a 6: ir direto para uma fase");
+draw_text(cx, 685, "WASD/setas mover   Mouse mirar/atirar   E ler terminal   ESPACO escudo   P pausa");
 
 draw_set_halign(fa_left);
 draw_sprite(spr_cursor, 0, mouse_x, mouse_y);</string>

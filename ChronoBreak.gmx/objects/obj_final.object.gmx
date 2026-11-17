@@ -50,9 +50,11 @@ texto = "2053. O mundo ainda nao sabe o que esta por vir.";</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_musica_manter();
-t += 1;
-if (t &gt; 400 &amp;&amp; keyboard_check_pressed(vk_enter)) room_goto(rm_menu);</string>
+            <string>t += 1;
+if (t &gt; 400 &amp;&amp; keyboard_check_pressed(vk_enter)) {
+    // para a musica de conclusao antes de voltar ao menu
+    scr_voltar_menu();
+}</string>
           </argument>
         </arguments>
       </action>
