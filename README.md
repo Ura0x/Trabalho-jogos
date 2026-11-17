@@ -36,7 +36,7 @@ Para abrir: no GameMaker, *Open* → `ChronoBreak.gmx/ChronoBreak.project.gmx`.
 - **Textos dos terminais:** evento *Create* do `obj_terminal`.
 - **`obj_controle`** (um por fase): diálogo, estado da fase (`inicio → jogando → saida_aberta → saindo`), HUD, pausa, game over e o final.
 - **`obj_player`:** movimento, mira, tiro, calor da arma e escudo.
-- **`obj_onnerb_cena`** (fase 4): Onnerb sai da porta da NEXUS, conversa com o John e volta para dentro; só depois a horda começa. `obj_onnerb`: Onnerb derrotado no final. Sprites do `boss_sprites_pack` (andar de frente, de costas e ajoelhado) (`spr_onnerb_frente`, `spr_onnerb_costas`, `spr_onnerb_parado`, `spr_onnerb`).
+- **`obj_onnerb_cena`** (fase 4): Onnerb sai da porta da NEXUS, conversa com o John e volta para dentro; só depois a horda começa. `obj_onnerb`: Onnerb derrotado no final. Sprites de `andando_baixo.gif`, `andando_cima.gif`, `parado_falando` e `morto.png` (`spr_onnerb_frente`, `spr_onnerb_costas`, `spr_onnerb_parado`, `spr_onnerb`).
 - **Inimigos:** todos são filhos de `obj_inimigo_pai` (vida, piscar, morte, distância até o jogador).
   - `obj_guarda`: máquina de estados `parado → atacando`; anda até ~200px e atira se não tiver parede no meio.
   - `obj_drone`: voa em círculo em volta do jogador (ignora paredes) e atira.

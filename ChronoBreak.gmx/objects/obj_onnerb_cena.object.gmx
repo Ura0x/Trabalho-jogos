@@ -33,7 +33,7 @@ if (obj_controle.cena_onnerb == false) {
 }
 estado = "entrando";   // "entrando" -&gt; "falando" -&gt; "saindo"
 porta_y = y;           // posicao da porta do predio (onde ele nasce e some)
-image_speed = 0.15;</string>
+image_speed = 0.08;</string>
           </argument>
         </arguments>
       </action>
@@ -60,10 +60,12 @@ switch (estado) {
     case "entrando":
         // desce da porta ate o meio da praca
         sprite_index = spr_onnerb_frente;
+        image_speed = 0.08;    // passos (o GIF troca de quadro a cada 220 ms)
         y += 1.5;
         if (y &gt;= porta_y + 120) {
             estado = "falando";
             sprite_index = spr_onnerb_parado;
+            image_speed = 0.04;   // boca abrindo e fechando enquanto fala
             scr_textos_fase("inicio");
             scr_dialogo_comecar("onnerb_sai");
         }
@@ -72,6 +74,7 @@ switch (estado) {
     case "saindo":
         // volta de costas para a porta e some
         sprite_index = spr_onnerb_costas;
+        image_speed = 0.08;
         y -= 1.5;
         if (y &lt;= porta_y) {
             scr_textos_fase("onnerb_saiu");

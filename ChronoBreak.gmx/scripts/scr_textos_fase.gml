@@ -155,7 +155,7 @@ case rm_boss:
         scr_fala("IA", "Titor, o piso esta marcando zonas de impacto! Fique longe das areas vermelhas!");
     }
     if (m == "limpo") {
-        scr_fala("", "A armadura explode em pedacos e Onnerb cai de joelhos.");
+        scr_fala("", "A armadura explode em pedacos e Onnerb cai no chao.");
         scr_fala("Onnerb", "Eu... eu so queria... que desse certo...");
         scr_fala("John", "Deu certo. Pra voce. So nao pra todo o resto.");
         scr_fala("", "Onnerb fica em silencio. O Chrono Gate se reativa sozinho, reconhecendo a biometria do diretor executivo, que ainda esta na sala.");
